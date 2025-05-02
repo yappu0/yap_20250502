@@ -17,8 +17,10 @@ class Order < ApplicationRecord
 
   class << self
     def delivery!
-      Order.where(delivery_on: Date.current, status: 'preparing').find_each do |order|
-        order.update!(status: 'delivered')
+      ApplicationRecord.transaction do
+        Order.where(delivery_on: Date.current, status: 'preparing').find_each do |order|
+          order.update!(status: 'delivered')
+        end
       end
     end
   end
