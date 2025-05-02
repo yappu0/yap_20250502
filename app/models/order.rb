@@ -14,4 +14,12 @@ class Order < ApplicationRecord
 
   attribute :delivery_time_zone, default: 'morning'
   attribute :status, default: 'preparing'
+
+  class << self
+    def delivery!
+      Order.where(delivery_on: Date.current, status: 'preparing').find_each do |order|
+        order.update!(status: 'delivered')
+      end
+    end
+  end
 end
