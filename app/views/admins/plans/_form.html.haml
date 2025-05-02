@@ -1,0 +1,16 @@
+.card
+  = simple_form_for [:admins, plan], html: { data: { controller: 'nested-form', 'nested-form-wrapper-selector-value': '.nested-form-wrapper' } } do |f|
+    %template{ data: { 'nested-form-target': 'template' } }
+      = f.fields_for :plan_foods, f.object.plan_foods.build, child_index: 'NEW_RECORD' do |ff|
+        = render 'nested_form', ff:
+    .card-body
+      = f.input :name
+      = f.input :description
+      = f.input :price
+      .vstack.gap-3
+        = f.fields_for :plan_foods do |ff|
+          = render 'nested_form', ff:
+        %div{ data: { 'nested-form-target': 'target' } }
+      = f.full_error :plan_food, class: 'small text-danger mt-1'
+      %button.btn.btn-sm.btn-outline-primary.mt-3{ type: 'button', data: { action: 'nested-form#add' } } 追加
+      .mt-3= f.button :submit, t('views.save'), class: 'btn-primary'

@@ -4,6 +4,8 @@ ja:
       administrator: 管理者
       user: ユーザー
       food: 食材
+      plan: プラン
+      plan_food: 食材
 
     attributes:
       administrator:
@@ -15,6 +17,17 @@ ja:
         name: 名前
         allergy: アレルギー
         freezed: 冷凍品
+      plan:
+        name: 名前
+        description: 説明
+        price: 価格（税込）
+      plan_food:
+        food_id: 食材
+        plan_id: プラン
+        amount: 数量
+
+  attributes:
+    plan_food: 食材は
 
   views:
     back: 戻る

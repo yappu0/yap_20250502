@@ -1,0 +1,5 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3 #{Plan.model_name.human}登録
+  = render 'form', plan: @plan
+  .my-3
+    = link_to t('views.back'), admins_plans_path, class: 'btn btn-secondary'

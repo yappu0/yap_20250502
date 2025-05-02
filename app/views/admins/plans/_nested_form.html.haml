@@ -1,0 +1,6 @@
+.card.nested-form-wrapper
+  .card-body
+    = ff.hidden_field :_destroy
+    = ff.input :food_id, as: :select, collection: Food.default_order
+    = ff.input :amount
+    %button.btn.btn-sm.btn-outline-danger{ type: 'button', data: { action: 'nested-form#remove' } } 削除

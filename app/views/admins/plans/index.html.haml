@@ -1,0 +1,15 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= Plan.model_name.human
+  .d-flex.justify-content-between.mb-3
+    = link_to t('views.new'), new_admins_plan_path, class: 'btn btn-primary'
+
+  %table.table.table-bordered
+    %tr
+      %th= Plan.human_attribute_name(:name)
+      %th= Plan.human_attribute_name(:description)
+      %th= Plan.human_attribute_name(:price)
+    - @plans.each do |plan|
+      %tr
+        %td= link_to plan.name, admins_plan_path(plan)
+        %td= plan.description
+        %td= number_to_currency(plan.price, unit: '¥', format: '%u%n')

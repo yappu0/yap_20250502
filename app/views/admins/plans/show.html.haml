@@ -1,0 +1,27 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= @plan.name
+  .mb-3.d-flex
+    = link_to t('views.edit'), edit_admins_plan_path(@plan), class: 'btn btn-primary me-2'
+    = button_to t('views.destroy'), admins_plan_path(@plan), method: :delete,
+                        data: { turbo_confirm: '削除します。よろしいですか？' }, class: 'btn btn-danger'
+
+
+  %table.table.table-bordered
+    %tbody
+      %tr
+        %th.w-72= Plan.human_attribute_name(:name)
+        %td= @plan.name
+      %tr
+        %th= Plan.human_attribute_name(:description)
+        %td= @plan.description
+      %tr
+        %th= Plan.human_attribute_name(:price)
+        %td= number_to_currency(@plan.price, unit: '¥', format: '%u%n')
+      %tr
+        %th= PlanFood.human_attribute_name(:food_id)
+        %td
+          - @plan.plan_foods.default_order.each do |plan_food|
+            = link_to "#{plan_food.food.name}／#{plan_food.amount}個", admins_food_path(plan_food.food)
+
+  .my-3
+    = link_to t('views.back'), admins_plans_path, class: 'btn btn-secondary'

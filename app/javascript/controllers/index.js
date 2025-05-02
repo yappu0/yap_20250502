@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import RailsNestedForm from "@stimulus-components/rails-nested-form"
+application.register("nested-form", RailsNestedForm)

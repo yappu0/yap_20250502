@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_02_013848) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_02_023652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,4 +33,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_013848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "plan_foods", force: :cascade do |t|
+    t.bigint "plan_id", null: false
+    t.bigint "food_id", null: false
+    t.integer "amount", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_plan_foods_on_food_id"
+    t.index ["plan_id", "food_id"], name: "index_plan_foods_on_plan_id_and_food_id", unique: true
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.text "description"
+    t.integer "price", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "plan_foods", "foods"
+  add_foreign_key "plan_foods", "plans"
 end

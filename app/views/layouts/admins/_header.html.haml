@@ -9,6 +9,8 @@
           %ul.navbar-nav.me-auto.mb-2.mb-lg-0
             %li.nav-item
               = link_to '食材', admins_foods_path, class: class_names('nav-link', 'active fw-bold': controller_name == 'foods')
+            %li.nav-item
+              = link_to 'プラン', admins_plans_path, class: class_names('nav-link', 'active fw-bold': controller_name == 'plans')
         .dropdown
           %a.d-flex.align-items-center.link-light.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
             %strong= current_administrator.email
