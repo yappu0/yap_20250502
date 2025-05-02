@@ -1,0 +1,17 @@
+%header
+  %nav.navbar.navbar-expand-lg.bg-secondary-subtle.py-3
+    .container-fluid.px-3
+      = link_to 'Syokuzai', root_path, class: 'navbar-brand'
+      - if user_signed_in?
+        %button.navbar-toggler{'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'data-bs-target': '#navbarSupportedContent', 'data-bs-toggle': 'collapse', type: 'button'}
+          %span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+            -# %li.nav-item
+              -# = link_to organization.name, organization_path(organization), class: 'nav-link'
+        .dropdown
+          %a.d-flex.align-items-center.link-dark.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
+            %strong= current_user.email
+          %ul.dropdown-menu.text-small.shadow
+            %li
+              = button_to 'ログアウト', destroy_user_session_path, method: :delete, form: { data: { turbo_confirm: 'ログアウトしますか？' } }, class: 'dropdown-item'

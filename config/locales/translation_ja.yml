@@ -6,6 +6,7 @@ ja:
       food: 食材
       plan: プラン
       plan_food: 食材
+      subscription: 定期購入
 
     attributes:
       administrator:
@@ -31,9 +32,33 @@ ja:
         food_id: 食材
         plan_id: プラン
         amount: 数量
+      subscription:
+        plan_id: プラン
+        delivery_frequency: 配送頻度
+        created_at: 登録日
+      order:
+        delivery_time_zone: 配送時間帯
+        delivery_on: 次回配送日
+        status: ステータス
+        price:  価格（税込）
+        delivery_time_zone: 配送時間帯
 
   attributes:
     plan_food: 食材は
+
+  enumerize:
+    subscription:
+      delivery_frequency:
+        weekly: 週1
+        bimonthly: 月2回
+    order:
+      delivery_time_zone:
+        morning: 午前
+        afternoon: 午後
+      status:
+        preparing: 配送前
+        delivered: 配送済み
+        canceled: キャンセル
 
   views:
     back: 戻る

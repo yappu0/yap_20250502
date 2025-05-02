@@ -1,0 +1,9 @@
+.container.my-4
+  %h1.fs-3.pb-2.border-bottom ご注文の入力
+  .mt-4.mb-3
+    = simple_form_for @subscription do |f|
+      = f.input :plan_id, collection: Plan.default_order, required: true
+      = f.input :delivery_frequency
+      = f.fields_for :order, @subscription.orders.build do |ff|
+        = ff.input :delivery_time_zone
+      = f.button :submit, t('views.save'), class: 'btn-primary'

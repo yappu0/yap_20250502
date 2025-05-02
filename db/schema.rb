@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_02_042728) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_02_052735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,6 +34,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_042728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "subscription_id", null: false
+    t.date "delivery_on", null: false
+    t.string "delivery_time_zone", null: false
+    t.string "status", null: false
+    t.integer "price", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_id"], name: "index_orders_on_subscription_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "plan_foods", force: :cascade do |t|
     t.bigint "plan_id", null: false
     t.bigint "food_id", null: false
@@ -55,6 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_042728) do
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "plan_id", null: false
+    t.string "delivery_frequency", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["plan_id", "user_id"], name: "index_subscriptions_on_plan_id_and_user_id", unique: true
@@ -80,6 +94,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_02_042728) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orders", "subscriptions"
+  add_foreign_key "orders", "users"
   add_foreign_key "plan_foods", "foods"
   add_foreign_key "plan_foods", "plans"
   add_foreign_key "subscriptions", "plans"

@@ -6,16 +6,14 @@ Rails.application.routes.draw do
              only: %i[sign_in sign_out session passwords],
              controllers: { sessions: 'admins/sessions' }
 
-  resources :subscriptions, only: %i[index]
+  resources :subscriptions, only: %i[index show new create]
+  root 'subscriptions#index'
 
   namespace :admins do
     resources :foods
     resources :plans
-
     root 'foods#index'
   end
-
-  root 'subscriptions#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

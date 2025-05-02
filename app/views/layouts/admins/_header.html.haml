@@ -1,7 +1,7 @@
 %header
-  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.py-3
     .container-fluid.px-3
-      = link_to '食材配達サービス', admins_root_path, class: 'navbar-brand'
+      = link_to 'Syokuzai', admins_root_path, class: 'navbar-brand'
       - if administrator_signed_in?
         %button.navbar-toggler{'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'data-bs-target': '#navbarSupportedContent', 'data-bs-toggle': 'collapse', type: 'button'}
           %span.navbar-toggler-icon

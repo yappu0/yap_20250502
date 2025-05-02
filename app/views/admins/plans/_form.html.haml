@@ -1,7 +1,7 @@
 .card
   = simple_form_for [:admins, plan], html: { data: { controller: 'nested-form', 'nested-form-wrapper-selector-value': '.nested-form-wrapper' } } do |f|
     %template{ data: { 'nested-form-target': 'template' } }
-      = f.fields_for :plan_foods, f.object.plan_foods.build, child_index: 'NEW_RECORD' do |ff|
+      = f.fields_for :plan_foods, plan.plan_foods.build, child_index: 'NEW_RECORD' do |ff|
         = render 'nested_form', ff:
     .card-body
       = f.input :name

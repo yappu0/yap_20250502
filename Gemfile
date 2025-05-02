@@ -5,6 +5,7 @@ gem 'rails', '~> 8.0.2'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'
+gem 'enumerize'
 gem 'haml-rails'
 gem 'jp_prefecture'
 gem 'jsbundling-rails'
@@ -18,6 +19,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 
 group :development, :test do
   gem 'brakeman', require: false
+  gem 'bullet'
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
 end
 

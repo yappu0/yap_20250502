@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :subscriptions, dependent: :destroy
-  has_many :plans, through: :subscriptions
+  has_many :subscriptions, dependent: :restrict_with_error
 
   validates :name, presence: true
   validates :email, presence: true

@@ -1,1 +1,10 @@
-index
+.container.my-4
+  .mb-3= link_to '新規定期購入', new_subscription_path, class: 'btn btn-primary'
+  %table.table.table-bordered.mb-3
+    %tr
+      %th= Subscription.human_attribute_name(:plan_id)
+      %th= Plan.human_attribute_name(:description)
+    - @subscriptions.each do |subscription|
+      %tr
+        %td= link_to subscription.plan.name, subscription_path(subscription)
+        %td= subscription.plan.description
