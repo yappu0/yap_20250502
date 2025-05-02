@@ -1,24 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
-
-$primary: #2864f0;
-$secondary: #71717a;
-$success: #15803d;
-$info: #7dd3fc;
-$warning: #eab308;
-$danger: #dc2626;
-$light: #e2e8f0;
-$dark: #262626;
-
-$theme-colors: (
-        "primary": $primary,
-        "secondary": $secondary,
-        "success": $success,
-        "info": $info,
-        "warning": $warning,
-        "danger": $danger,
-        "light": $light,
-        "dark": $dark
-);
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@100..900&display=swap');
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -28,4 +8,10 @@ $theme-colors: (
 body {
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.5;
+}
+
+.mochiy-pop-one-regular {
+  font-family: "Mochiy Pop One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

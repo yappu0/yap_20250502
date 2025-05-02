@@ -14,6 +14,11 @@
       %tr
         %th= Plan.human_attribute_name(:description)
         %td= @subscription.plan.description
+      %tr
+        %th= Food.model_name.human
+        %td
+          - @subscription.plan.plan_foods.includes(:food).default_order.each do |plan_food|
+            #{plan_food.food.name}／#{plan_food.amount}個
 
   .my-4.border-top
 
