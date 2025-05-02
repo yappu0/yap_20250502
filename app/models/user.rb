@@ -15,4 +15,14 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
+
+  def shipping_cost
+    prefecture_name = JpPrefecture::Prefecture.find(prefecture.to_i).name
+    case prefecture_name
+    when '北海道', '沖縄'
+      800
+    else
+      500
+    end
+  end
 end

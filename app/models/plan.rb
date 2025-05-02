@@ -1,5 +1,6 @@
 class Plan < ApplicationRecord
   has_many :plan_foods, dependent: :destroy
+  has_many :foods, through: :plan_foods
   has_many :subscriptions, dependent: :restrict_with_error
 
   scope :default_order, -> { order(:id) }

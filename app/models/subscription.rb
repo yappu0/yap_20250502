@@ -1,14 +1,16 @@
 class Subscription < ApplicationRecord
+  FROZEN_SHIPPING_COST = 100
+
   extend Enumerize
 
   belongs_to :user
   belongs_to :plan
 
-  has_many :orders, dependent: :restrict_with_error
+  has_many :orders, dependent: :destroy
 
   scope :default_order, -> { order(:id) }
 
-  validates :plan_id, uniqueness: { scope: :user_id }
+  validates :plan_id, presence: true, uniqueness: { scope: :user_id }
   validates :delivery_frequency, presence: true
 
   enumerize :delivery_frequency, in: %i[weekly bimonthly]
@@ -26,15 +28,18 @@ class Subscription < ApplicationRecord
     end
   end
 
+  def total_price
+    (plan.foods.where(freezed: true).count * FROZEN_SHIPPING_COST) + plan.price + user.shipping_cost
+  end
+
   def save_with_order
     return false if invalid?
 
-    # 配送費込の価格を計算しないといけない
     orders.build(
       user:,
       delivery_on: Date.current + delivery_frequency_to_days,
       status: 'preparing',
-      price: plan.price
+      price: total_price
     )
 
     save

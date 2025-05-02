@@ -38,10 +38,9 @@ ja:
         created_at: 登録日
       order:
         delivery_time_zone: 配送時間帯
-        delivery_on: 次回配送日
+        delivery_on: 配送日
         status: ステータス
         price:  価格（税込）
-        delivery_time_zone: 配送時間帯
 
   attributes:
     plan_food: 食材は

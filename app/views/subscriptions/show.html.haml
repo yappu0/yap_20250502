@@ -9,6 +9,9 @@
         %th.w-72= Subscription.human_attribute_name(:plan_id)
         %td= @subscription.plan.name
       %tr
+        %th.w-72= Plan.human_attribute_name(:price)
+        %td= number_to_currency(@subscription.plan.price, unit: '¥', format: '%u%n')
+      %tr
         %th= Plan.human_attribute_name(:description)
         %td= @subscription.plan.description
 
@@ -21,7 +24,7 @@
         %th.w-72= Order.human_attribute_name(:delivery_on)
         %td= l(order.delivery_on, format: :long)
       %tr
-        %th= Order.human_attribute_name(:price)
+        %th 税込価格（配送費含む）
         %td= number_to_currency(order.price, unit: '¥', format: '%u%n')
       %tr
         %th= Order.human_attribute_name(:status)
