@@ -4,14 +4,15 @@ gem 'rails', '~> 8.0.2'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'haml-rails'
 gem 'jsbundling-rails'
 gem 'pg'
 gem 'propshaft'
 gem 'puma'
+gem 'simple_form'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
-gem 'haml-rails'
 
 group :development, :test do
   gem 'brakeman', require: false
