@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :foods
     resources :plans
+    resources :users, only: %i[index show]
     root 'foods#index'
   end
 

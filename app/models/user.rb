@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :subscriptions, dependent: :restrict_with_error
 
+  scope :default_order, -> { order(:id) }
+
   validates :name, presence: true
   validates :email, presence: true
   validates :postal_code, presence: true

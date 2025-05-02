@@ -1,0 +1,47 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= @user.name
+
+  %table.table.table-bordered
+    %tr
+      %th.w-72= User.human_attribute_name(:name)
+      %td= @user.name
+    %tr
+      %th= User.human_attribute_name(:email)
+      %td= @user.email
+    %tr
+      %th= User.human_attribute_name(:postal_code)
+      %td= JpPrefecture::Prefecture.find(@user.prefecture).name
+    %tr
+      %th= User.human_attribute_name(:prefecture)
+      %td= @user.prefecture
+    %tr
+      %th= User.human_attribute_name(:city)
+      %td= @user.city
+    %tr
+      %th= User.human_attribute_name(:address)
+      %td= @user.address
+    %tr
+      %th= User.human_attribute_name(:postal_code)
+      %td= @user.postal_code
+    %tr
+      %th= User.human_attribute_name(:phone_number)
+      %td= @user.phone_number
+    %tr
+      %th= User.human_attribute_name(:allergy)
+      %td= @user.allergy
+
+  %h2.fs-4.mb-3 定期購入
+  - @user.subscriptions.includes(:plan).default_order.each do |subscription|
+    %table.table.table-bordered
+      %tr
+        %th.w-72= Subscription.human_attribute_name(:created_at)
+        %td= l(subscription.created_at, format: :long)
+      %tr
+        %th.w-72= Subscription.human_attribute_name(:plan_id)
+        %td= subscription.plan.name
+      %tr
+        %th= Plan.human_attribute_name(:description)
+        %td= subscription.plan.description
+
+  .my-3
+    = link_to t('views.back'), admins_users_path, class: 'btn btn-secondary'

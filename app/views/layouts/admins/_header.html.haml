@@ -11,6 +11,8 @@
               = link_to '食材', admins_foods_path, class: class_names('nav-link', 'active fw-bold': controller_name == 'foods')
             %li.nav-item
               = link_to 'プラン', admins_plans_path, class: class_names('nav-link', 'active fw-bold': controller_name == 'plans')
+            %li.nav-item
+              = link_to 'ユーザー', admins_users_path, class: class_names('nav-link', 'active fw-bold': controller_name == 'users')
         .dropdown
           %a.d-flex.align-items-center.link-light.text-decoration-none.dropdown-toggle{ 'aria-expanded': 'false', 'data-bs-toggle': 'dropdown', href: '#' }
             %strong= current_administrator.email

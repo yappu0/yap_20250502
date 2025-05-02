@@ -17,19 +17,18 @@
   %h2.fs-4.mb-3 ご注文履歴
   - @subscription.orders.latest.each do |order|
     %table.table.table-bordered.mb-3
-      %tbody
-        %tr
-          %th.w-72= Order.human_attribute_name(:delivery_on)
-          %td= l(order.delivery_on, format: :long)
-        %tr
-          %th= Order.human_attribute_name(:price)
-          %td= number_to_currency(order.price, unit: '¥', format: '%u%n')
-        %tr
-          %th= Order.human_attribute_name(:status)
-          %td= order.status_text
-        %tr
-          %th= Order.human_attribute_name(:delivery_time_zone)
-          %td= order.delivery_time_zone_text
+      %tr
+        %th.w-72= Order.human_attribute_name(:delivery_on)
+        %td= l(order.delivery_on, format: :long)
+      %tr
+        %th= Order.human_attribute_name(:price)
+        %td= number_to_currency(order.price, unit: '¥', format: '%u%n')
+      %tr
+        %th= Order.human_attribute_name(:status)
+        %td= order.status_text
+      %tr
+        %th= Order.human_attribute_name(:delivery_time_zone)
+        %td= order.delivery_time_zone_text
 
   .my-3
     = link_to t('views.back'), subscriptions_path, class: 'btn btn-secondary'

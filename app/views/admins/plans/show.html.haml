@@ -20,7 +20,7 @@
       %tr
         %th= PlanFood.human_attribute_name(:food_id)
         %td
-          - @plan.plan_foods.default_order.each do |plan_food|
+          - @plan.plan_foods.includes(:food).default_order.each do |plan_food|
             = link_to "#{plan_food.food.name}／#{plan_food.amount}個", admins_food_path(plan_food.food)
 
   .my-3

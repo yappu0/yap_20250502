@@ -1,0 +1,9 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= User.model_name.human
+
+  %table.table.table-bordered
+    %tr
+      %th= User.human_attribute_name(:name)
+    - @users.each do |user|
+      %tr
+        %td= link_to user.name, admins_user_path(user)
