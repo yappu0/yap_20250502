@@ -35,7 +35,7 @@
     %table.table.table-bordered
       %tr
         %th.w-72= Subscription.human_attribute_name(:created_at)
-        %td= l(subscription.created_at, format: :long)
+        %td= link_to l(subscription.created_at, format: :long), admins_user_subscription_path(@user, subscription), class: 'text-decoration-none'
       %tr
         %th.w-72= Subscription.human_attribute_name(:plan_id)
         %td= subscription.plan.name

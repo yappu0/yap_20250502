@@ -7,14 +7,19 @@ Rails.application.routes.draw do
              controllers: { sessions: 'admins/sessions' }
 
   resources :subscriptions, only: %i[index show new create]
-  root 'subscriptions#index'
 
   namespace :admins do
     resources :foods
     resources :plans
-    resources :users, only: %i[index show]
+    resources :users, only: %i[index show] do
+      scope module: :users do
+        resources :subscriptions, only: %i[show]
+      end
+    end
     root 'foods#index'
   end
+
+  root 'subscriptions#index'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

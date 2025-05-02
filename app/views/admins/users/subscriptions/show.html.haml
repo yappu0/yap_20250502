@@ -1,0 +1,37 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3 #{@user.name}／定期購入の詳細
+  %table.table.table-bordered.mb-3
+    %tbody
+      %tr
+        %th.w-72= Subscription.human_attribute_name(:created_at)
+        %td= l(@subscription.created_at, format: :long)
+      %tr
+        %th.w-72= Subscription.human_attribute_name(:plan_id)
+        %td= @subscription.plan.name
+      %tr
+        %th.w-72= Plan.human_attribute_name(:price)
+        %td= number_to_currency(@subscription.plan.price, unit: '¥', format: '%u%n')
+      %tr
+        %th= Plan.human_attribute_name(:description)
+        %td= @subscription.plan.description
+
+  .my-4.border-top
+
+  %h2.fs-4.mb-3 ご注文履歴
+  - @subscription.orders.latest.each do |order|
+    %table.table.table-bordered.mb-3
+      %tr
+        %th.w-72= Order.human_attribute_name(:delivery_on)
+        %td= l(order.delivery_on, format: :long)
+      %tr
+        %th 税込価格（配送費含む）
+        %td= number_to_currency(order.price, unit: '¥', format: '%u%n')
+      %tr
+        %th= Order.human_attribute_name(:status)
+        %td= order.status_text
+      %tr
+        %th= Order.human_attribute_name(:delivery_time_zone)
+        %td= order.delivery_time_zone_text
+
+  .my-3
+    = link_to t('views.back'), admins_user_path(@user), class: 'btn btn-secondary'
