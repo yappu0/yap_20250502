@@ -6,6 +6,7 @@ gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'haml-rails'
+gem 'jp_prefecture'
 gem 'jsbundling-rails'
 gem 'pg'
 gem 'propshaft'
