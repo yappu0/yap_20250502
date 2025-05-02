@@ -23,6 +23,7 @@ end
 group :development do
   gem 'haml-lint', require: false
   gem 'html2haml'
+  gem 'letter_opener_web'
   gem 'sgcop', github: 'SonicGarden/sgcop', branch: 'main'
   gem 'web-console'
 end
