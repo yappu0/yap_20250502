@@ -1,1 +1,11 @@
-INDex
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= Food.model_name.human
+  .d-flex.justify-content-between.mb-3
+    = link_to t('views.new'), new_admins_food_path, class: 'btn btn-primary'
+
+  %table.table.table-bordered
+    %tr
+      %th= Food.human_attribute_name(:name)
+    - @foods.each do |food|
+      %tr
+        %td= link_to food.name, admins_food_path(food)

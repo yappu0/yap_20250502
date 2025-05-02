@@ -1,0 +1,25 @@
+.container-fluid.px-3.py-5
+  %h1.fs-3.mb-3= @food.name
+  .mb-3.d-flex
+    = link_to t('views.edit'), edit_admins_food_path(@food), class: 'btn btn-primary me-2'
+    = button_to t('views.destroy'), admins_food_path(@food), method: :delete,
+                        data: { turbo_confirm: '削除します。よろしいですか？' }, class: 'btn btn-danger'
+
+
+  %table.table.table-bordered
+    %tbody
+      %tr
+        %th.w-72= Food.human_attribute_name(:name)
+        %td= @food.name
+      %tr
+        %th= Food.human_attribute_name(:allergy)
+        %td.text-pre-wrap= @food.allergy
+      %tr
+        %th= Food.human_attribute_name(:freezed)
+        %td= render_status_icon(active: @food.freezed?)
+      -# %tr
+      -#   %th プラン
+      -#   %td= @food.systems.includes(:organization).distinct.pluck('organizations.name').to_sentence
+
+  .my-3
+    = link_to t('views.back'), admins_foods_path, class: 'btn btn-secondary'

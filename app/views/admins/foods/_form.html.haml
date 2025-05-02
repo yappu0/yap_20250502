@@ -1,0 +1,7 @@
+.card
+  = simple_form_for [:admins, food] do |f|
+    .card-body
+      = f.input :name
+      = f.input :allergy
+      = f.input :freezed
+      = f.button :submit, t('views.save'), class: 'btn-primary'

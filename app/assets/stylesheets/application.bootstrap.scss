@@ -23,6 +23,8 @@ $theme-colors: (
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+@import 'shared/width';
+
 body {
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.5;

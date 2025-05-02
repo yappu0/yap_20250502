@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    models:
+      administrator: 管理者
+      user: ユーザー
+      food: 食材
+
+    attributes:
+      administrator:
+        email: メールアドレス
+      user:
+        name: 名前
+        email: メールアドレス
+      food:
+        name: 名前
+        allergy: アレルギー
+        freezed: 冷凍品
+
+  views:
+    back: 戻る
+    new: 新規登録
+    edit: 編集
+    show: 詳細
+    save: 登録
+    sending: 処理中
+    destroy: 削除
+    confirm: 削除します。よろしいですか？
+
+  controllers:
+    created: 新規登録しました
+    destroyed: 削除しました
+    not_destroyed: 削除できませんでした
+    updated: 更新しました
+    completed: 完了しました
