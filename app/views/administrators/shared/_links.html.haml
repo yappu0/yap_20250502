@@ -1,0 +1,7 @@
+- if controller_name != 'sessions'
+  .mt-3= link_to t('devise.shared.links.sign_in'), new_session_path(resource_name)
+  %br/
+- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+  .mt-3
+    = link_to t('devise.shared.links.forgot_your_password'), new_password_path(resource_name)
+  %br/
